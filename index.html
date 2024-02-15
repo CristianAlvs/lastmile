@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.4/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="./js/index.js" type="module"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-okaidia.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap">
+    <link rel="stylesheet" href="style/index.css">
+    <link rel="stylesheet" href="style/main.css">
+    <link rel="stylesheet" href="style/navigation.css">
+    <link rel="stylesheet" href="style/table.css">
+
+    <title>Last Mile</title>
+</head>
+<body>
+    <header>
+        <h1>API - Last Mile</h1>
+        <nav id="navigation" class="hide">
+            <ul>
+                <li data-section="introduction">Introdução</li>
+                <li data-section="rotas">Rotas</li>
+                <li data-section="occurrences">Ocorrências</li>
+                <li data-section="completion">Finalização</li>
+                <li data-section="requestInteraction">Teste</li>
+            </ul>
+        </nav>
+        <img src="assets/logoAzul.png" alt="Logo Azul Cargo Express">
+    </header>
+    <main>
+        <button id="btnOpenMenu" class="hide">
+            <img src="assets/icon-menu.png" alt="Icone de abrir menu">
+        </button>
+        <button id="btnCloseMenu" class="hide"> 
+            <img src="assets/icon-close.png" alt="Icone de fechar menu">
+        </button>
+        <div class="mainContent">
+            <section id="introduction">
+                <h2>Introdução</h2>
+                <p>O Toolkit de integrações da Azul Cargo, facilita a integração de novos parceiros que desejam realizar a entrega da mercadoria ao cliente final, realizando o processo de last mile.</p>
+                <p>Por aqui você irá conhecer como funciona o processo técnico para viabilizar essa integração, incluindo os modelos de arquivos que utilizamos em nossa plataforma, conhecerá quais as ocorrências precisamos receber em cada etapa da entrega, explicação dos retornos que enviaremos a vocês nas situações mapeadas e muito mais.</p> 
+                <p>É muito importante que você entenda todos os passos aqui descritos para que, no final dessa jornada possamos realizar um teste efetivo de nossa integração, tudo bem? </p>
+                
+                <div>
+                    <h2>Retorno da requisição</h2>
+                    <p>Todas as requisições concluídas, com sucesso ou erro, pelo Toolkit irão retornar um JSON de estrutura padronizada, independentemente do recurso que foi solicitado.</p>
+    
+                    <div class="flex">
+                        <div class="descriptions">
+                            <div class="returnCodes">
+                                <h3>Códigos de retorno</h3>
+                                <ul id="returnCodeList"></ul>
+                            </div>
+            
+                            <div class="errorCodes">
+                                <h3>Códigos de erro</h3>
+                                <ul id="errorCodeList"></ul>
+                            </div>
+                        </div>
+                        <div class="table-container">
+                            <table id="tableCodigosRequisicao"></table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="rotas">
+                <h2>Rotas</h2>
+                <p>É a lista de cargas que você fará a entrega.</p>
+                <p>
+                    O cadastro da rota é feito com o nome e CPF de um motorista que atenderá aquela rota. 
+                    Caso você atenda mais de um destino, para cada destino é necessário informar o NOME e CPF de um motorista, 
+                    pois as rotas serão integradas a partir desses dados.
+                </p>
+                <p>
+                    O envio de rotas, contempla todos os AWBs a serem entregues por vocês.
+                </p>
+
+                <h3>Token e URL</h3>
+                <p>(Mesmo que a empresa possua diversos CNPJs por região, o token e URL são unicos)</p>
+                <ul>
+                    <li><strong>Token:</strong> é chave de autenticação no ambiente na api do parceiro. </li>
+                    <li><strong>URL (Post):</strong> endereço para onde serão enviadas as rotas no momento do teste. (Campo text na tela para usuario informar endpoint onde serão postadas as rotas) </li>
+                </ul>
+
+                <div class="flex">
+                    <div class="awb">
+                        <h3>O que é AWB</h3>
+                        <div class="flex">
+                            <div class="descriptionText">
+                                <p>Código de rastreio da encomenda.</p>
+                                <p><strong>Formato:</strong>577 + 8 caracteres + enumerador do volume (ex:577123456780001, 577123456780002).</p>
+        
+                                <h4>Etiqueta AWB</h4>
+                                <p>A etiqueta é a identificação daquela encomenda. Nela contém o código de barras com as informações necessárias para identificação e baixa da entrega.</p>
+                            </div>
+                            <img class="etiqueta" src="./assets/etiquetaAWB.png" alt="Imagem da Etiqueta de uma AWB">
+                        </div>
+                    </div>
+    
+                    <div class="bag">
+                        <h3>O que é BAG</h3>
+                        <div class="flex">
+                            <div class="descriptionText">
+                                <p>É uma consolidação de várias cargas, seja em sacas, cages, gayloards, caixas e etc. </p>
+        
+                                <h4>Tipos de BAG</h4>
+                                <p>
+                                    <strong>BAG CONSOLIDADA (MILKRUN):</strong>
+                                    Nesse modelo de consolidação, o cliente da Azul envia as encomendas já consolidadas em caixas ou sacas, e, portanto, não é necessário realizar nenhum processo de “quebra ou desconsolidação", neste caso toda movimentação da carga e alocação em rota de entrega deve ser feita bipando a numeração da etiqueta colada na carga, que no caso é etiqueta de BAG.
+                                </p>
+    
+                                <h4>Etiqueta BAG</h4>
+                                <p>A etiqueta é a identificação daquela encomenda. Nela contém o código de barras com as informações necessárias para identificação e baixa da entrega.</p>
+                            </div>
+                            <img class="etiqueta" src="./assets/etiquetaBAG.png" alt="Imagem da Etiqueta de uma AWB">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table id="tableRota"></table>
+                </div>
+
+                <div class="input-wrapper">
+                    <label class="containsTag"><span class="tagPost">POST</span>Exemplo JSON de Rotas</label>
+                    <pre id="areaJson"><code class="language-json" id="jsonRotas"></code></pre>
+                </div>
+            </section>
+
+            <section id="occurrences">
+                <h2>Ocorrências</h2>
+                
+                <div class="flex">
+                    <div>
+                        <h3>O que é uma ocorrência?</h3>
+                        <p>São eventos que permitem realizar o rastreamento da encomenda a partir do momento em que ela sai da base.</p>  
+                        <p>É <strong>OBRIGATÓRIO</strong> o envio das ocorrências a partir do momento em que o motorista sai da base com o pacote. </p>
+
+                        <h3>Envio de Ocorrências</h3>
+                        <p>
+                        Envia uma ocorrência para uma determinanada CTE. 
+                        O retorno da requisição irá fornecer uma lista com o serviços contemplados 
+                        de acordo com a localização do destinatário.
+                        </p>
+
+                        <div class="endpoint">
+                            <h4 class="containsTag"><span class="tagPost">POST</span>EndPoint para Finalização de Entrega</h4>
+                            <p>https://hmg-ediapi.onlineapp.com.br/lastmile/api/ocorrencias/FinalizarEntrega?token=ea1d4ebf-13ac-40c7-877b-d002d9e706a3</p>
+                        </div>
+                        <div class="endpoint">
+                            <h4 class="containsTag"><span class="tagPost">POST</span>EndPoint para uma Ocoorência</h4>
+                            <p>https://hmg-ediapi.onlineapp.com.br/lastmile/api/ocorrencias/EnviarOcorrencia?token=ea1d4ebf-13ac-40c7-877b-d002d9e706a3</p>
+                        </div>
+                    </div>    
+                    <div class="table-container">
+                        <table id="tableCodigosOcorrencias"></table>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table id="tableRecebimentoAusente"></table>
+                </div>
+
+                <div class="input-wrapper">
+                    <label class="containsTag"><span class="tagPost">POST</span>Exemplo JSON de uma Ocorrência</label>
+                    <pre id="areaJson"><code class="language-json" id="jsonRecebimentoAusente"></code></pre>
+                </div> 
+
+                <div class="flex imageTemplate">
+                    <div>
+                        <h3>Envio de imagens</h3>
+                        <p>No momento da entrega, além do registro da ocorrência, o motorista deve anexar a foto descrita abaixo: </p>
+                        <p><strong>POD - IMAGEM OBRIGATÓRIA:</strong> Exceto para a ocorrência 133, a foto da fachada do local da entrega deve ser enviada em caso de insucesso na entrega do pacote.</p>
+                        <p>O envio das ocorrências e registro das imagens devem ser realizados on time, quando o motorista está entregando a carga.</p>
+    
+                        <p>
+                            <strong>IMPORTANTE: NÃO É PERMITIDO IMAGENS ALEATÓRIAS OU COM BAIXA RESOLUÇÃO, CORTADAS, COM PREENCHIMENTO PARCIAL etc.</strong> O não cumprimento dessa obrigatoriedade pode ocasionar em penalidades a empresa responsável pela entrega em caso de acareação* por desconhecimento do recebedor.           
+                            *Acareação: quando o cliente solicita evidências de que a carga foi entregue ao destinatário correto.
+                        </p>
+                        <p>*Acareação: quando o cliente solicita evidências de que a carga foi entregue ao destinatário correto.</p>
+                    </div>
+                    <div>
+                        <h3>Modelo das imagens</h3>
+                        <img src="./assets/imgPOD.png" alt="Imagem de exemplo para uma ocorrencia">
+                    </div>
+                </div>
+            </section>
+
+            <section id="completion">
+                <h2>Finalização</h2>
+
+                <div class="flex">
+                    <div>
+                        <p>É a conclusão do processo de entrega com sucesso.</p>
+                        <h3 class="containsTag"><span class="tagPost">POST</span>Recebimento Finalização</h3>
+                    </div>
+                    <div class="table-container">
+                        <table id="tableCodigosFinalizacoes"></table>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table id="tableEntregaRealizada"></table>
+                </div>
+
+                <div class="input-wrapper">
+                    <label class="containsTag"><span class="tagPost">POST</span>Exemplo JSON de Entrega Realizada</label>
+                    <pre id="areaJson"><code class="language-json" id="jsonEntregaRealizada"></code></pre>
+                </div> 
+
+                <div class="flex imageTemplate">
+                    <div>
+                        <h3>Envio de imagens</h3>
+                        <p>No momento da entrega, além do registro da finalização, o motorista deve anexar a foto descrita abaixo: </p>
+                        <p><strong>ASSINATURA – IMAGEM OBRIGATÓRIA NAS ENTREGAS COM SUCESSO:</strong> foto da etiqueta azul contendo assinatura do recebedor, número do documento do recebedor e data da entrega.</p>
+                        <p><strong>POD - IMAGEM OBRIGATÓRIA:</strong> Exceto para a ocorrência 133, a foto da fachada do local da entrega deve ser enviada em caso de insucesso na entrega do pacote.</p>
+                        <p>O envio das ocorrências e registro das imagens devem ser realizados on time, quando o motorista está entregando a carga.</p>
+    
+                        <p>
+                            <strong>IMPORTANTE: NÃO É PERMITIDO IMAGENS ALEATÓRIAS OU COM BAIXA RESOLUÇÃO, CORTADAS, COM PREENCHIMENTO PARCIAL etc.</strong> O não cumprimento dessa obrigatoriedade pode ocasionar em penalidades a empresa responsável pela entrega em caso de acareação* por desconhecimento do recebedor.           
+                            *Acareação: quando o cliente solicita evidências de que a carga foi entregue ao destinatário correto.
+                        </p>
+                        <p>*Acareação: quando o cliente solicita evidências de que a carga foi entregue ao destinatário correto.</p>
+                    </div>
+                    <div>
+                        <h3>Modelo das imagens</h3>
+                        <img src="./assets/imgOcorrencia.png" alt="Imagem de exemplo para uma ocorrencia">
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div id="requestInteraction">
+            <h3>Faça um teste você mesmo</h3>
+            <div class="flex">
+                <div class="descriptionText">
+                    <p>Após realizar os desenvolvimentos aderentes aos padrões da Azul, você está apto para fazer o teste de recebimento de rotas.</p>
+                    <p>Quando o motorista coletar a entrega deve-se enviar uma ocorrência 133(Saiu para entrega) para o endpoint informado na aba de ocorrências com o token recebido por email para cada AWB presente na rota.</p>
+                    <p>Depois você pode finalizar ou enviar uma ocorrência de insucesso, sempre com as imagens em anexo conforme explicado em cada um dos itens.</p>
+                    <p>Ao concluir todos os passos anteriores, você deve notificar aos times Azul no e-mail integracao.lastmile@voeazul.com.br evidenciando o sucesso obtido em cada etapa acima descrita.</p>
+                    <p>Recebendo as evidências agendaremos uma reunião para validarmos se tudo ocorreu como esperado, e enfim iniciarmos o processo de envio das encomendas com vocês.</p>
+                </div>
+                <div>
+                    <form>
+                        <div class="input-wrapper">
+                            <label for="linkApi">Link Api</label>
+                            <input type="text" id="linkApi" placeholder="Insira o Link da API desenvolvida por você, Parceiro Azul">
+                        </div>
+                        <div class="input-wrapper">
+                            <label for="token">Token de Acesso</label>
+                            <input type="text" id="token" placeholder="Insira o token de acesso">
+                        </div>
+                        <button type="button" id="btnSendRequest">Enviar</button>
+                    </form>
+    
+                    <div>
+                        <div class="input-wrapper areaJson">
+                            <label>Resultado:</label>
+                            <pre id="areaJson"><code class="language-json" id="json-result">...</code></pre>
+                        </div> 
+                    </div>   
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

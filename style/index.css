@@ -1,0 +1,241 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    border: none;
+
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.6rem;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-smoothing: grayscale;
+}
+
+:root {
+    --base-color-100: #fafafa;
+    --base-color-200: #f3f3f3;
+    --base-color-300: #cecece;
+    --base-color-400: #a1a1a1;
+
+    --subtitleTable-color-subtitleTable: #e8f0f7;
+    --subtitleTable-color-hover: #d6e3ee;
+
+    --primary-color: #041E42;
+    --primary-color-hover: #083b6b;
+
+    --second-color: #23a1d3;
+    --second-color-hover: #1788b4;
+
+    --subtitle-color: #32329f;
+    --font-color: #585858;
+
+    font-size: 62.5%;
+}
+
+body::-webkit-scrollbar {
+    width: .4rem;
+    border-radius: 1rem;
+    background-color: var(--base-color-200);
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: var(--base-color-300);
+    border-radius: .6rem;
+}
+
+.noScroll {
+    overflow: hidden;
+}
+
+header,
+main {
+    padding: 2rem 2rem;
+}
+
+main {
+    padding-top: 0;
+}
+
+header {
+    background-color: var(--base-color-100);
+    color: var(--primary-color);
+
+    width: 100vw;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    box-shadow: 0px 2px 8px rgba(211, 211, 211, 0.4);
+}
+
+header h1 {
+    font-size: 1.8rem;
+}
+
+
+header img {
+    width: 10rem;
+}
+
+h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.8rem;
+    font-weight: 500;
+
+    margin-bottom: 2rem;
+
+    color: var(--subtitle-color);
+} 
+
+h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem;
+    margin: 2rem 0;
+    color: var(--subtitle-color);
+    font-weight: bold;
+}
+
+h4 {
+    margin: 1.6rem;
+}
+
+p, li {
+    max-width: 100rem;
+    line-height: 2.1rem;
+    color: var(--font-color);
+}
+
+.hide {
+    display: none;
+}
+
+.flex {
+    padding: 2rem 0;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    gap: 4rem;
+}
+
+#btnOpenMenu,
+#btnCloseMenu {
+    background-color: var(--primary-color);
+    border-radius: 50%;
+
+    border: 2px solid var(--base-color-100);
+
+    position: fixed;
+    bottom: 0;
+    right: 0;
+
+    padding: 1.2rem 1.2rem 1rem;
+    margin: 2rem;
+
+    cursor: pointer;
+
+    transition: .4s;
+    z-index: 1000;
+}
+
+#btnOpenMenu:hover,
+#btnCloseMenu:hover {
+    background-color: var(--primary-color-hover);
+}
+
+#btnOpenMenu img,
+#btnCloseMenu img {
+    width: 1.6rem;
+    margin-top: 2px;
+}
+
+.containsTag {
+    display: flex;
+    align-items: center;
+}
+.containsTag .tagPost {
+    color: var(--base-color-100);
+    background-color: var(--second-color);
+    margin-right: 1rem;
+
+    font-size: 1rem;
+    font-weight: bold;
+    padding: .2rem .6rem;
+    border-radius: .4rem;
+}
+
+.input-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    font-size: 1.4rem;
+    color: var(--font-color);
+
+    width: 100%;
+    margin-top: 2rem;
+}
+
+.input-wrapper input,
+.input-wrapper textarea {
+    background-color: var(--base-color-100);
+
+    border: 1px solid #E6E6F0;
+    border-radius: .4rem;
+    padding: 0 2.4rem;
+
+    font-size: 1.6rem;
+    color: var(--font-color);
+}
+
+.input-wrapper input {
+    height: 5.6rem;
+}
+
+.input-wrapper textarea {
+    padding: 1.6rem 2.4rem;
+    height: 10.6rem;
+    max-height: 40rem;
+    resize: none;
+    font-family: Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;
+}
+
+.input-wrapper textarea::-webkit-scrollbar {
+    width: .4rem;
+    border-radius: 1rem;
+    background-color: var(--base-color-200);
+}
+
+.input-wrapper textarea::-webkit-scrollbar-thumb {
+    background-color: var(--base-color-300);
+    border-radius: .6rem;
+}
+
+.input-wrapper textarea::placeholder,
+.input-wrapper input::placeholder {
+    color: var(--base-color-400);
+}
+
+/* RESPONSIVE */
+@media screen and (min-width: 1200px) {
+    header {
+        position: fixed;
+    }
+
+    main {
+        padding-top: 6rem;
+    }
+
+    header,
+    main {
+        padding-left: 4rem;
+        padding-right: 4rem;
+    }
+
+    .flex {
+        flex-direction: row;
+    }
+}

@@ -1,0 +1,145 @@
+main section,
+main #introduction div {
+    padding-top: 4rem;
+}
+
+.imageTemplate {
+    justify-content: space-between;
+}
+
+.imageTemplate strong {
+    color: black;
+}
+
+.mainContent li {
+    list-style: disc;
+    margin-left: 1.6rem;
+}
+
+.mainContent li + li {
+    margin-top: 1rem;
+}
+
+main p {
+    margin-bottom: .8rem;
+}
+
+main #introduction .flex div {
+    padding: 0;
+}
+
+main #introduction .returnCodes strong,
+main #introduction .errorCodes strong {
+    margin-right: .6rem;
+}
+
+main #introduction .returnCodes strong {
+    color: #2da32f;
+}
+
+main #introduction .errorCodes strong {
+    color: #c02727;
+}
+
+main #rotas .flex h3 {
+    margin: 0;
+}
+
+main #rotas .flex {
+    justify-content: start;
+
+    gap: 1.6rem;
+}
+
+main #rotas .flex .flex{
+    align-items: start;
+}
+
+main #rotas .bag,
+main #rotas .awb {
+    border-radius: .4rem;
+    padding: 2.4rem;
+    box-shadow: 0px 2px 10px rgba(129, 129, 129, 0.4);
+}
+
+main #occurrences .endpoint {
+    margin-top: 2rem;
+    padding: 2rem 2.4rem;
+
+    border-radius: .4rem;
+    box-shadow: 0px 2px 10px rgba(153, 153, 153, 0.4);
+}
+
+main #occurrences h4 {
+    margin: 0;
+    margin-bottom: 1.6rem;
+}
+
+main #completion .flex {
+    justify-content: space-between;
+}
+
+.etiqueta {
+    width: 24rem;
+}
+
+#areaJson {
+    background-color: var(--primary-color);
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+#areaJson code{
+    color: var(--base-color-300);
+    background-color: var(--primary-color);
+}
+
+#btnSendRequest {
+    margin-top: 2rem;
+    border-radius: .4rem;
+    width: 100%;
+    padding: 2rem;
+    font-size: 2rem;
+    background-color: var(--second-color);
+    color: var(--base-color-100);
+    cursor: pointer;
+
+    transition: .4s;
+}
+
+#btnSendRequest:hover {
+    background-color: var(--second-color-hover);
+}
+
+#requestInteraction h3 {
+    font-size: 2.4rem;
+    color: var(--primary-color);
+    text-align: center;
+    border-bottom: 1px solid var(--base-color-300);
+
+    padding: 2rem;
+}
+
+#requestInteraction .descriptionText {
+    margin-top: 4rem;
+}
+
+/* RESPONSIVE */
+@media screen and (min-width: 1200px) {
+    main #rotas .descriptionText {
+        max-width: 40rem;
+    }
+
+    #requestInteraction form,
+    #requestInteraction .areaJson {
+        width: 50vw;
+    }
+
+    #rotas #requestInteraction .flex {
+        gap: 4rem;
+    }
+
+    main #completion .flex .table-container {
+        width: 50%;
+    }
+}
