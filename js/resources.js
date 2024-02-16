@@ -5,7 +5,7 @@ export default function Resources() {
     }
     
     const errorCodes = {
-        "400 Requisição inválida:": "Ocorre quando a requisição possuí argumentos inválidos para completar a solicitação.",
+        "400 Requisição inválida:": "Ocorre quando a requisição possui argumentos inválidos para completar a solicitação.",
         "401 Não autorizado:": "Ocorre quando o usuário não está devidamente autenticado (Token inválido) ou quando não possui permissão para acessar o recurso solicitado.",
         "403 Proibido:": "Ocorre quando o servidor recebe a requisição e foi capaz de identificar o autor, porém não autorizou a emissão de um resposta.",
         "404 Não encontrado:": "Ocorre quando a chamada não encontra o caminho de destino da requisição, seja pelo fornecimento errado da URL do destino ou por não disponibilidade do serviço requisitado.",
