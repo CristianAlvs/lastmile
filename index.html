@@ -47,7 +47,7 @@
                 <h2>Introdução</h2>
                 <p>O Toolkit de integrações da Azul Cargo, facilita a integração de novos parceiros que desejam realizar a entrega da mercadoria ao cliente final, realizando o processo de last mile.</p>
                 <p>Por aqui você irá conhecer como funciona o processo técnico para viabilizar essa integração, incluindo os modelos de arquivos que utilizamos em nossa plataforma, conhecerá quais as ocorrências precisamos receber em cada etapa da entrega, explicação dos retornos que enviaremos a vocês nas situações mapeadas e muito mais.</p> 
-                <p>É muito importante que você entenda todos os passos aqui descritos para que, no final dessa jornada possamos realizar um teste efetivo de nossa integração, tudo bem? </p>
+                <p><strong>É muito importante que você entenda todos os passos aqui descritos</strong> para que, no final dessa jornada possamos realizar um teste efetivo de nossa integração. </p>
                 
                 <div>
                     <h2>Retorno da requisição</h2>
@@ -74,7 +74,7 @@
 
             <section id="rotas">
                 <h2>Rotas</h2>
-                <p>É a lista de cargas que você fará a entrega.</p>
+                <p>É a lista das cargas contemplando todos os AWB's a serem entregues por você.</p>
                 <p>
                     O cadastro da rota é feito com o nome e CPF de um motorista que atenderá aquela rota. 
                     Caso você atenda mais de um destino, para cada destino é necessário informar o NOME e CPF de um motorista, 
@@ -90,6 +90,8 @@
                     <li><strong>Token:</strong> é chave de autenticação no ambiente na api do parceiro. </li>
                     <li><strong>URL (Post):</strong> endereço para onde serão enviadas as rotas no momento do teste. (Campo text na tela para usuario informar endpoint onde serão postadas as rotas) </li>
                 </ul>
+                <br>
+                <p><strong>IMPORTANTE:</strong> Mesmo que a empresa possua diversos CNPJs por região, o token e URL são unicos.</p>
 
                 <div class="flex">
                     <div class="awb">
@@ -97,7 +99,7 @@
                         <div class="flex">
                             <div class="descriptionText">
                                 <p>Código de rastreio da encomenda.</p>
-                                <p><strong>Formato:</strong>577 + 8 caracteres + enumerador do volume (ex:577123456780001, 577123456780002).</p>
+                                <p><strong>Formato:</strong>577 + 8 caracteres + enumerador do volume (exemplo: 577123456780001, 577123456780002).</p>
         
                                 <h4>Etiqueta AWB</h4>
                                 <p>A etiqueta é a identificação daquela encomenda. Nela contém o código de barras com as informações necessárias para identificação e baixa da entrega.</p>
@@ -112,10 +114,13 @@
                             <div class="descriptionText">
                                 <p>É uma consolidação de várias cargas, seja em sacas, cages, gayloards, caixas e etc. </p>
         
-                                <h4>Tipos de BAG</h4>
+                                <h4>Tipo de BAG</h4>
                                 <p>
                                     <strong>BAG CONSOLIDADA (MILKRUN):</strong>
-                                    Nesse modelo de consolidação, o cliente da Azul envia as encomendas já consolidadas em caixas ou sacas, e, portanto, não é necessário realizar nenhum processo de “quebra ou desconsolidação", neste caso toda movimentação da carga e alocação em rota de entrega deve ser feita bipando a numeração da etiqueta colada na carga, que no caso é etiqueta de BAG.
+                                    Nesse modelo o cliente da Azul envia as encomendas já consolidadas em caixas ou sacas, 
+                                    e, portanto, <strong>não é necessário realizar nenhum processo de “quebra ou desconsolidação"</strong>, 
+                                    neste caso toda movimentação da carga e alocação em rota de entrega deve ser feita 
+                                    bipando a numeração da etiqueta colada na carga, que no caso é etiqueta da BAG.
                                 </p>
     
                                 <h4>Etiqueta BAG</h4>
@@ -142,7 +147,7 @@
                 <div class="flex">
                     <div>
                         <h3>O que é uma ocorrência?</h3>
-                        <p>São eventos que permitem realizar o rastreamento da encomenda a partir do momento em que ela sai da base.</p>  
+                        <p>São eventos que permitem realizar o rastreamento da encomenda a partir do momento em que ela sai da base de destino.</p>  
                         <p>É <strong>OBRIGATÓRIO</strong> o envio das ocorrências a partir do momento em que o motorista sai da base com o pacote. </p>
 
                         <h3>Envio de Ocorrências</h3>
