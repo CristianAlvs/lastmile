@@ -6,9 +6,9 @@ export default function Tables() {
         columns: ["Nome do campo","Tipo de dado","Descrição"],
         data: [
             ["ErrorText",'string', 'Detalhes do erro' ],
-            ["HasErrors", 'boolean', 'Indica se ocorreu falha (quando true) durante a requisição.' ],
-            ["Value",'object', 'Objeto de com os dados de retorno esperado.' ],
-            ["Value", 'object', 'Objeto de com os dados de retorno esperado.' ]
+            ["HasErrors", 'boolean', 'Indica se ocorreu falha (quando true) durante a requisição' ],
+            ["Value",'object', 'Objeto de com os dados de retorno esperado' ],
+            ["Value", 'object', 'Objeto de com os dados de retorno esperado' ]
         ]
     }
 
