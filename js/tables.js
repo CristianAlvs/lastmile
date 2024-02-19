@@ -14,7 +14,7 @@ export default function Tables() {
 
     const tableCodigosOcorrencias = {
         tableId: "tableCodigosOcorrencias",
-        title: "Códigos das ocorrências",
+        title: "CÓDIGOS DE OCORRÊNCIAS",
         columns: ["CÓDIGO","OCORRÊNCIA"],
         data: [
             ["133",	"SAIU PARA ENTREGA"],
