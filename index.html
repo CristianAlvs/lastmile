@@ -152,9 +152,8 @@
 
                         <h3>Envio de Ocorrências</h3>
                         <p>
-                        Envia uma ocorrência para uma determinanada CTE. 
-                        O retorno da requisição irá fornecer uma lista com o serviços contemplados 
-                        de acordo com a localização do destinatário.
+                            É o processo em que a transportadora envia à Azul notificações do processo de entrega de cada AWB.
+                            O retorno da requisição irá fornecer uma lista com o serviços contemplados de acordo com a localização do destinatário.
                         </p>
 
                         <div class="endpoint">
@@ -162,7 +161,7 @@
                             <p>https://hmg-ediapi.onlineapp.com.br/lastmile/api/ocorrencias/FinalizarEntrega?token=ea1d4ebf-13ac-40c7-877b-d002d9e706a3</p>
                         </div>
                         <div class="endpoint">
-                            <h4 class="containsTag"><span class="tagPost">POST</span>EndPoint para uma Ocoorência</h4>
+                            <h4 class="containsTag"><span class="tagPost">POST</span>EndPoint para uma Ocorrência</h4>
                             <p>https://hmg-ediapi.onlineapp.com.br/lastmile/api/ocorrencias/EnviarOcorrencia?token=ea1d4ebf-13ac-40c7-877b-d002d9e706a3</p>
                         </div>
                     </div>    
@@ -205,7 +204,7 @@
 
                 <div class="flex">
                     <div>
-                        <p>É a conclusão do processo de entrega com sucesso.</p>
+                        <p>É a conclusão do processo de entrega <strong>com sucesso.</strong></p>
                         <h3 class="containsTag"><span class="tagPost">POST</span>Recebimento Finalização</h3>
                     </div>
                     <div class="table-container">
@@ -247,11 +246,11 @@
             <h3>Faça um teste você mesmo</h3>
             <div class="flex">
                 <div class="descriptionText">
-                    <p>Após realizar os desenvolvimentos aderentes aos padrões da Azul, você está apto para fazer o teste de recebimento de rotas.</p>
-                    <p>Quando o motorista coletar a entrega deve-se enviar uma ocorrência 133(Saiu para entrega) para o endpoint informado na aba de ocorrências com o token recebido por email para cada AWB presente na rota.</p>
-                    <p>Depois você pode finalizar ou enviar uma ocorrência de insucesso, sempre com as imagens em anexo conforme explicado em cada um dos itens.</p>
+                    <h4>Após realizar os desenvolvimentos aderentes aos padrões da Azul, você está apto para fazer o teste de recebimento de rotas conforme abaixo.</h4>
+                    <ul id="nextStepsList"></ul>
                     <p>Ao concluir todos os passos anteriores, você deve notificar aos times Azul no e-mail integracao.lastmile@voeazul.com.br evidenciando o sucesso obtido em cada etapa acima descrita.</p>
                     <p>Recebendo as evidências agendaremos uma reunião para validarmos se tudo ocorreu como esperado, e enfim iniciarmos o processo de envio das encomendas com vocês.</p>
+                    <strong>Até mais.</strong>
                 </div>
                 <div>
                     <form>
