@@ -13,11 +13,10 @@ export default function Resources() {
     }
 
     const nextStepsList = {
-        "1": "Após realizar os desenvolvimentos aderentes aos padrões da Azul, você está apto para fazer o teste de recebimento de rotas.",
-        "2": "Quando o motorista coletar a entrega deve-se enviar uma ocorrência 133(Saiu para entrega) para o endpoint informado na aba de ocorrências com o token recebido por email para cada AWB presente na rota.",
-        "3": "Depois você pode finalizar ou enviar uma ocorrência de insucesso, sempre com as imagens em anexo conforme explicado em cada um dos itens.",
-        "4": "Ao concluir todos os passos anteriores, você deve notificar aos times Azul no e-mail integracao.lastmile@voeazul.com.br evidenciando o sucesso obtido em cada etapa acima descrita. ",
-        "5": "Recebendo as evidências agendaremos uma reunião para validarmos se tudo ocorreu como esperado, e enfim iniciarmos o processo de envio das encomendas com vocês. "
+        "1": 'Insira o link da API desenvolvida por você no campo "Link API";',
+        "2": 'Insira seu token de acesso no campo "Token de acesso;"',
+        "3": 'Quando o motorista coletar a entrega você deve enviar uma ocorrência 133(Saiu para entrega) para o endpoint informado na aba de ocorrências com o token recebido por e-mail para cada AWB presente na rota.',
+        "4": 'Depois você pode finalizar ou enviar uma ocorrência de insucesso, sempre com as imagens em anexo.',
     }
 
     const jsonEntregaRealizada = { 
