@@ -2,7 +2,7 @@ export default function Tables() {
 
     const tableCodigosRequisicao = {
         tableId: "tableCodigosRequisicao",
-        title: "Estrutura do objeto de retorno da API",
+        title: "ESTRUTURA DO OBJETO DE RETORNO DA API",
         columns: ["Nome do campo","Tipo de dado","Descrição"],
         data: [
             ["ErrorText",'string', 'Detalhes do erro' ],
@@ -32,7 +32,7 @@ export default function Tables() {
 
     const tableCodigosFinalizacoes = {
         tableId: "tableCodigosFinalizacoes",
-        title: "Códigos de finalizações",
+        title: "CÓDIGO DE FINALIZAÇÃO",
         columns: ["CÓDIGO","DESCRIÇÃO"],
         data: [
             ["1",	"ENTREGA REALIZADA NORMALMENTE"],
@@ -41,7 +41,7 @@ export default function Tables() {
 
     const tableEntregaRealizada = {
         tableId: "tableEntregaRealizada",
-        title: "Estrutura do JSON da Entrega Realizada Normalmente",
+        title: "ESTRUTURA DO JSON DA ENTREGA REALIZADA NORMALMENTE",
         columns: ["Nome do campo", "Requisito", "Tipo de dado", "Descrição"],
         data: [
             ["Unidade",'required','string','Sigla da unidade de origem de destino da Azul Cargo. Esta informação foi recebida no envio de pedidos.' ],
@@ -64,7 +64,7 @@ export default function Tables() {
 
     const tableRecebimentoAusente = {
         tableId: "tableRecebimentoAusente",
-        title: "Estrutura do JSON de uma Ocorrência",
+        title: "ESTRUTURA DO JSON DE UMA OCORRÊNCIA",
         columns: ["Nome do campo", "Requisito", "Tipo de dado", "Descrição"],
         data: [
             ["Unidade",'required','string','Sigla da unidade de origem de destino da Azul Cargo. Esta informação foi recebida no envio de pedidos.' ],
@@ -84,7 +84,7 @@ export default function Tables() {
 
     const tableRota= {
         tableId: "tableRota",
-        title: "Estrutura do JSON de Rotas",
+        title: "ESTRUTURA DO JSON DE ROTAS",
         columns: ["Campo", "Significado", "Tipo", "Limitação", "Detalhe Azul"],
         data: [
             ["Empresa",	"Código da unidade de negócio para qual as rotas são destinadas",	"String",	"20 caracteres",	"Sigla da unidade de destino"],
