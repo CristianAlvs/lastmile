@@ -30,6 +30,7 @@
                 <li data-section="rotas">Rotas</li>
                 <li data-section="occurrences">Ocorrências</li>
                 <li data-section="completion">Finalização</li>
+                <li data-section="images">Imagens</li>
                 <li data-section="requestInteraction">Teste</li>
             </ul>
         </nav>
@@ -80,18 +81,14 @@
                     Caso você atenda mais de um destino, para cada destino é necessário informar o NOME e CPF de um motorista, 
                     pois as rotas serão integradas a partir desses dados.
                 </p>
-                <p>
-                    O envio de rotas, contempla todos os AWBs a serem entregues por vocês.
-                </p>
 
                 <h3>Token e URL</h3>
-                <p>(Mesmo que a empresa possua diversos CNPJs por região, o token e URL são unicos)</p>
+                <p>Mesmo que você possua diversos CNPJ's de atendimento por região/localidade, o token e URL são únicos por parceiro, a diferenciação da localidade será feita pelos dados dos motoristas.</p>
                 <ul>
                     <li><strong>Token:</strong> é chave de autenticação no ambiente na api do parceiro. </li>
                     <li><strong>URL (Post):</strong> endereço para onde serão enviadas as rotas no momento do teste. (Campo text na tela para usuario informar endpoint onde serão postadas as rotas) </li>
                 </ul>
                 <br>
-                <p><strong>IMPORTANTE:</strong> Mesmo que a empresa possua diversos CNPJs por região, o token e URL são unicos.</p>
 
                 <div class="flex">
                     <div class="awb">
@@ -178,25 +175,6 @@
                     <label class="containsTag"><span class="tagPost">POST</span>Exemplo JSON de uma Ocorrência</label>
                     <pre id="areaJson"><code class="language-json" id="jsonRecebimentoAusente"></code></pre>
                 </div> 
-
-                <div class="flex imageTemplate">
-                    <div>
-                        <h3>Envio de imagens</h3>
-                        <p>No momento da entrega, além do registro da ocorrência, o motorista deve anexar a foto descrita abaixo: </p>
-                        <p><strong>POD - IMAGEM OBRIGATÓRIA:</strong> Exceto para a ocorrência 133, a foto da fachada do local da entrega deve ser enviada em caso de insucesso na entrega do pacote.</p>
-                        <p>O envio das ocorrências e registro das imagens devem ser realizados on time, quando o motorista está entregando a carga.</p>
-    
-                        <p>
-                            <strong>IMPORTANTE: NÃO É PERMITIDO IMAGENS ALEATÓRIAS OU COM BAIXA RESOLUÇÃO, CORTADAS, COM PREENCHIMENTO PARCIAL etc.</strong> O não cumprimento dessa obrigatoriedade pode ocasionar em penalidades a empresa responsável pela entrega em caso de acareação* por desconhecimento do recebedor.           
-                            *Acareação: quando o cliente solicita evidências de que a carga foi entregue ao destinatário correto.
-                        </p>
-                        <p>*Acareação: quando o cliente solicita evidências de que a carga foi entregue ao destinatário correto.</p>
-                    </div>
-                    <div>
-                        <h3>Modelo das imagens</h3>
-                        <img src="./assets/imgPOD.png" alt="Imagem de exemplo para uma ocorrencia">
-                    </div>
-                </div>
             </section>
 
             <section id="completion">
@@ -205,6 +183,7 @@
                 <div class="flex">
                     <div>
                         <p>É a conclusão do processo de entrega <strong>com sucesso.</strong></p>
+                        <p><strong>IMPORTANTE:</strong> na finalização, é <strong>imprescindível</strong> o envio da imagem da assinatura, seja da etiqueta ou do app com as informações do recebedor: assinatura do recebedor, número do documento do recebedor e data da entrega.</p>
                         <h3 class="containsTag"><span class="tagPost">POST</span>Recebimento Finalização</h3>
                     </div>
                     <div class="table-container">
@@ -220,20 +199,23 @@
                     <label class="containsTag"><span class="tagPost">POST</span>Exemplo JSON de Entrega Realizada</label>
                     <pre id="areaJson"><code class="language-json" id="jsonEntregaRealizada"></code></pre>
                 </div> 
+            </section>
 
+            <section id="images">
                 <div class="flex imageTemplate">
                     <div>
-                        <h3>Envio de imagens</h3>
-                        <p>No momento da entrega, além do registro da finalização, o motorista deve anexar a foto descrita abaixo: </p>
-                        <p><strong>ASSINATURA – IMAGEM OBRIGATÓRIA NAS ENTREGAS COM SUCESSO:</strong> foto da etiqueta azul contendo assinatura do recebedor, número do documento do recebedor e data da entrega.</p>
-                        <p><strong>POD - IMAGEM OBRIGATÓRIA:</strong> Exceto para a ocorrência 133, a foto da fachada do local da entrega deve ser enviada em caso de insucesso na entrega do pacote.</p>
+                        <h2>Envio de imagens</h2>
+                        <p>No momento da entrega, além do registro da ocorrência, o motorista deve anexar as fotos descritas abaixo:</p>
+                        <p><strong>POD - IMAGEM OBRIGATÓRIA EM TODAS AS OCORRÊNCIAS* (entrega com sucesso ou insucesso):</strong> Foto da fachada do local da entrega.</p>
+                        <p><strong>ASSINATURA – IMAGEM OBRIGATÓRIA NA OCORRÊNCIA DE FINALIZAÇÃO (entrega com sucesso):</strong> Foto da etiqueta contendo assinatura do recebedor, número do documento do recebedor e data da entrega. Esta foto pode ser da etiqueta da Azul, ou direto do APP de entrega, incluindo as informações obrigatórias descritas acima.</p>
                         <p>O envio das ocorrências e registro das imagens devem ser realizados on time, quando o motorista está entregando a carga.</p>
     
                         <p>
-                            <strong>IMPORTANTE: NÃO É PERMITIDO IMAGENS ALEATÓRIAS OU COM BAIXA RESOLUÇÃO, CORTADAS, COM PREENCHIMENTO PARCIAL etc.</strong> O não cumprimento dessa obrigatoriedade pode ocasionar em penalidades a empresa responsável pela entrega em caso de acareação* por desconhecimento do recebedor.           
-                            *Acareação: quando o cliente solicita evidências de que a carga foi entregue ao destinatário correto.
+                            <strong>IMPORTANTE: NÃO É PERMITIDO IMAGENS ALEATÓRIAS OU COM BAIXA RESOLUÇÃO, CORTADAS, COM PREENCHIMENTO PARCIAL etc.</strong> O não cumprimento dessa obrigatoriedade pode ocasionar em penalidades a empresa responsável pela entrega em caso de acareação** por desconhecimento do recebedor.
                         </p>
-                        <p>*Acareação: quando o cliente solicita evidências de que a carga foi entregue ao destinatário correto.</p>
+
+                        <p>* Exceto para a ocorrência 133 - Saiu para entrega</p>
+                        <p>** Acareação: quando o cliente solicita evidências de que a carga foi entregue ao destinatário incorreto.</p>
                     </div>
                     <div>
                         <h3>Modelo das imagens</h3>
@@ -246,11 +228,11 @@
             <h3>Faça um teste você mesmo</h3>
             <div class="flex">
                 <div class="descriptionText">
-                    <h4>Após realizar os desenvolvimentos aderentes aos padrões da Azul, você está apto para fazer o teste de recebimento de rotas conforme abaixo.</h4>
+                    <p>Após realizar os desenvolvimentos aderentes aos padrões da Azul, você está apto para fazer o teste de recebimento de rotas conforme abaixo.</p>
                     <ul id="nextStepsList"></ul>
                     <p>Ao concluir todos os passos anteriores, você deve notificar aos times Azul no e-mail integracao.lastmile@voeazul.com.br evidenciando o sucesso obtido em cada etapa acima descrita.</p>
                     <p>Recebendo as evidências agendaremos uma reunião para validarmos se tudo ocorreu como esperado, e enfim iniciarmos o processo de envio das encomendas com vocês.</p>
-                    <strong>Até mais.</strong>
+                    <p>Até mais.</p>
                 </div>
                 <div>
                     <form>
