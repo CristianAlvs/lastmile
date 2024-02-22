@@ -12,31 +12,43 @@ export default function Tables() {
         ]
     }
 
-    const tableCodigosOcorrencias = {
-        tableId: "tableCodigosOcorrencias",
-        title: "CÓDIGOS DE OCORRÊNCIAS",
-        columns: ["CÓDIGO","OCORRÊNCIA"],
-        data: [
-            ["133",	"SAIU PARA ENTREGA"],
-            ["3",	"RECUSA POR FALTA DE PEDIDO DE COMPRA"],
-            ["4",	"RECUSA POR PEDIDO DE COMPRA CANCELADO"],
-            ["6",	"ENDERECO DO CLIENTE DESTINO NAO FOI LOCALIZADO"],
-            ["21",	"ESTABELECIMENTO FECHADO"],
-            ["46",	"RESPONSAVEL DE RECEBIMENTO AUSENTE"],
-            ["47",	"CLIENTE DESTINO EM GREVE"],
-            ["77",	 "CLIENTE DESTINO MUDOU DE ENDERECO"],
-            ["511",	"DESTINATARIO DESCONHECIDO NO LOCAL"],
-            ["518",	"PEDIDO RECUSADO"]
-        ]
-    }
+    function createDataTableOcorrences(codes) {
+        let listCodesCorrence = []
+        let listCodesEnd = []
+            
+        for (let code in codes) {
+            if(codes[code].codigo == "1"){
+                let lineCodeEnd = []
 
-    const tableCodigosFinalizacoes = {
-        tableId: "tableCodigosFinalizacoes",
-        title: "CÓDIGO DE FINALIZAÇÃO",
-        columns: ["CÓDIGO","DESCRIÇÃO"],
-        data: [
-            ["1",	"ENTREGA REALIZADA NORMALMENTE"],
-        ]
+                lineCodeEnd.push(codes[code].codigo)
+                lineCodeEnd.push(codes[code].descricao)
+
+                listCodesEnd.push(lineCodeEnd)
+            } else {
+                let lineCodeOcurrence = []
+
+                lineCodeOcurrence.push(codes[code].codigo)
+                lineCodeOcurrence.push(codes[code].descricao)
+
+                listCodesCorrence.push(lineCodeOcurrence)
+            }
+        }
+
+        const tableCodeOcurrence = {
+            tableId: "tableCodigosOcorrencias",
+            title: "CÓDIGOS DE OCORRÊNCIAS",
+            columns: ["CÓDIGO","OCORRÊNCIA"],
+            data: listCodesCorrence
+        }
+
+        const tableCodesEnd = {
+            tableId: "tableCodigosFinalizacoes",
+            title: "CÓDIGO DE FINALIZAÇÃO",
+            columns: ["CÓDIGO","DESCRIÇÃO"],
+            data: listCodesEnd
+        }
+
+        return { tableCodeOcurrence, tableCodesEnd }
     }
 
     const tableEntregaRealizada = {
@@ -168,10 +180,9 @@ export default function Tables() {
 
     return {
         tableCodigosRequisicao,
-        tableCodigosOcorrencias,
         tableRecebimentoAusente,
         tableEntregaRealizada,
         tableRota,
-        tableCodigosFinalizacoes
+        createDataTableOcorrences
     }
 }
