@@ -124,26 +124,39 @@ function checkScreenSize() {
 }
 
 // API
-function getApi() {
-    let apiUrl = $("#linkApi").val();
-
-    $.ajax({
-        url: apiUrl,
-        type: "POST",
-        contentType: "application/json",
-        headers: {
-          "Authorization": "Bearer " + $("#token").val()
-        },
-        data: JSON.stringify(resources.jsonRotas),
-        success: function(response) {
-          formatJson(response, $("#json-result"));
-        },
-        error: function(error) {
-          formatJson(error, $("#json-result"));
-        }
-    });
+const api = {
+    postRoutes() {
+        let apiUrl = $("#linkApi").val();
+    
+        $.ajax({
+            url: apiUrl,
+            type: "POST",
+            contentType: "application/json",
+            headers: {
+              "Authorization": "Bearer " + $("#token").val()
+            },
+            data: JSON.stringify(resources.jsonRotas),
+            success: function(response) {
+              formatJson(response, $("#json-result"));
+            },
+            error: function(error) {
+              formatJson(error, $("#json-result"));
+            }
+        });
+    },
+    getOccurrenceCodesToCreateTables() {
+        $.ajax({
+          url: "https://hmg-ediapi.onlineapp.com.br/lastmile/api/Parametros/GetListaTipoOcorrencias",
+          type: "GET",
+          success: function(response) {
+            const tableCodes = tables.createDataTableOcorrences(response);
+            createTable(tableCodes.tableCodeOcurrence);
+            createTable(tableCodes.tableCodesEnd);
+          },
+          error: function() {}
+        });
+    }
 }
-
 
 // EVENTS
 function events() {
@@ -152,7 +165,7 @@ function events() {
     $("textarea").on("input", function() {
         adjustTextareaHeight($(this));
     });
-    $("#btnSendRequest").click(getApi);
+    $("#btnSendRequest").click(api.postRoutes);
     $("#btnOpenMenu").click(menuToggle);
     $("#btnCloseMenu").click(menuToggle);
 
@@ -172,12 +185,11 @@ $(document).ready(function() {
     fillCodeList(resources.errorCodes, "#errorCodeList", "strong");
     fillCodeList(resources.nextStepsList, "#nextStepsList", "strong");
 
+    api.getOccurrenceCodesToCreateTables();
     createTable(tables.tableCodigosRequisicao);
     createTable(tables.tableRecebimentoAusente);
     createTable(tables.tableRota);
-    createTable(tables.tableCodigosOcorrencias);
     createTable(tables.tableEntregaRealizada);
-    createTable(tables.tableCodigosFinalizacoes);
 
     checkScreenSize();
 
