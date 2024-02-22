@@ -14,7 +14,7 @@ export default function Resources() {
 
     const nextStepsList = {
         "1": 'Insira o link da API desenvolvida por você no campo "Link API";',
-        "2": 'Insira seu token de acesso no campo "Token de acesso;"',
+        "2": 'Insira seu token de acesso no campo "Token de acesso";',
         "3": 'Quando o motorista coletar a entrega você deve enviar uma ocorrência 133(Saiu para entrega) para o endpoint informado na aba de ocorrências com o token recebido por e-mail para cada AWB presente na rota.',
         "4": 'Depois você pode finalizar ou enviar uma ocorrência de insucesso, sempre com as imagens em anexo.',
     }
