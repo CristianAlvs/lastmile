@@ -107,6 +107,10 @@ p, li {
     color: var(--font-color);
 }
 
+img {
+    max-width: 100%;
+}
+
 .hide {
     display: none;
 }
