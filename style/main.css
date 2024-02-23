@@ -70,6 +70,10 @@ main #occurrences .endpoint {
     box-shadow: 0px 2px 10px rgba(153, 153, 153, 0.4);
 }
 
+main #occurrences .endpoint p {
+    word-wrap: break-word;
+}
+
 main #occurrences h4 {
     margin: 0;
     margin-bottom: 1.6rem;
